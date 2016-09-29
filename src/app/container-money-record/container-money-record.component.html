@@ -1,0 +1,10 @@
+<td *ngIf="record.state === 0" class="success">{{ record.category }}</td>
+<td *ngIf="record.state === 1" class="danger">{{ record.category }}</td>
+<td>{{ record.date | date:'y / MM / dd' }}</td>
+<td>{{ record.description }}</td>
+<td>--</td>
+<td>{{ record.price }}</td>
+<td>
+    <button class="btn btn-primary">E</button>
+    <button class="btn btn-danger" (click)="onRemoveRecord()">D</button>
+</td>

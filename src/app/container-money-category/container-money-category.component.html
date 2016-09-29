@@ -1,0 +1,14 @@
+<div class="category-selector">
+	<a (click)="showSelector(true)" class="btn btn-default">Categories</a>
+	<div class="selector" *ngIf="isSelectorVisibile">
+		<div
+			class="category"
+			*ngFor="let category of categories"
+			(click)="onSelectCategory(category)"
+		>{{ category }}</div>
+		<div
+			class="category"
+			(click)="showSelector(false)"
+		>Close</div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<app-ui-appbar></app-ui-appbar>
+<div class="container">
+    <app-container-money-creator (createRecord)="onCreateRecord($event)" [categories]="categories"></app-container-money-creator>
+    <hr>
+    <table class="table table-hover catdlist">
+        <thead>
+            <tr>
+                <th width="35"></th>
+                <th>Date</th>
+                <th>Descriptions</th>
+                <th>Income</th>
+                <th>Expenditure</th>
+                <th width="100">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                app-container-money-record
+                [record]="record"
+                *ngFor="let record of records; let i = index"
+                (removeRecord)="onMoneyRecordRemoved($event, i)"
+            ></tr>
+        </tbody>
+    </table>
+</div>

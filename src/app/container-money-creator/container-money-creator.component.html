@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+    <form (submit)="onCreateRecord()">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-10 col-sm-9">
+                    <div class="form-group">
+                        <input
+                            [(ngModel)]="newRecord.price"
+                            (focus)="toggleFullForm(1)"
+                            name="price"
+                            type="number"
+                            class="form-control"
+                            id="carLicenseNumber"
+                            placeholder="Price ($)"
+                        >
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-3 text-right">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-success" (click)="getState(0)">
+                            <input type="radio" name="state" value="0" id="income" autocomplete="off"> 收入
+                        </label>
+                        <label class="btn btn-danger active" (click)="getState(1)">
+                            <input type="radio" name="state" value="1" id="expenditure" autocomplete="off" checked> 支出
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="fullForm">
+                <div class="col-xs-12">
+                    <textarea [(ngModel)]="newRecord.description" class="form-control" name="description" id="" cols="30" rows="5" placeholder="Descriptions"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer" *ngIf="fullForm">
+            <div class="row">
+                <div class="col-xs-10 col-sm-9">
+                    <a class="btn btn-default">{{ newRecord.date | date:'y / MM / dd' }}</a>
+                    <app-container-money-category [categories]="categories" (categorySelected)="onCategorySelected($event)"></app-container-money-category>
+                    <!-- <a class="btn btn-default">Add a photo</a> -->
+                </div>
+                <div class="col-xs-2 col-sm-3 text-right">
+                    <button
+                        class="btn btn-default"
+                        type="reset"
+                        (click)="clearForm()"
+                    >Clear</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
