@@ -2,8 +2,9 @@
 <td *ngIf="record.state === 1" class="danger">{{ record.category }}</td>
 <td>{{ record.date | date:'y / MM / dd' }}</td>
 <td>{{ record.description }}</td>
+<td *ngIf="record.state === 0" >{{ record.price | currency:'TWD':true }}</td>
 <td>--</td>
-<td>{{ record.price }}</td>
+<td *ngIf="record.state === 1" >{{ record.price | currency:'TWD':true }}</td>
 <td>
     <button class="btn btn-primary">E</button>
     <button class="btn btn-danger" (click)="onRemoveRecord()">D</button>
